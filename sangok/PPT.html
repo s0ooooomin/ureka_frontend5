@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>자기소개.pptx - PowerPoint</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body {
+                font-family: "Noto Sans KR", sans-serif;
+                margin: 0;
+                padding: 0;
+                overflow: hidden; /* Added overflow-hidden to remove scrollbars */
+            }
+            .thumbnail-wrapper {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .slide-number {
+                color: #333;
+                font-size: 14px;
+                font-weight: 600;
+                padding-top: 4px;
+                min-width: 20px;
+            }
+            .thumbnail {
+                position: relative;
+                transition: border-color 0.2s;
+                flex: 1;
+            }
+            .thumbnail:hover {
+                border-color: #000 !important;
+            }
+            .thumbnail.active {
+                border-color: #ff6b35 !important;
+            }
+            img[src="image/처음부터.jpg"]:hover {
+                opacity: 1 !important;
+            }
+            img[src="image/현재슬라이드부터.jpg"]:hover {
+                opacity: 1 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="relative w-full relative bg-white border-b border-gray-300 h-10">
+            <!-- PowerPoint Header/Ribbon Area -->
+            <div class="static w-full bg-white border-b border-gray-300 h-25">
+                <img
+                    src="image/PPT 헤더.jpg"
+                    alt="PowerPoint Header"
+                    class="w-full h-auto object-contain"
+                />
+                <!-- Wrapped first button with anchor tag for direct navigation -->
+                <a href="index.html">
+                    <img
+                        id="firstSlideBtn"
+                        src="image/처음부터.jpg"
+                        alt="Overlay"
+                        class="absolute top-0 left-0 w-full h-full object-contain opacity-0 transition-opacity cursor-pointer"
+                        style="top: 42px; left: -9px; width: 59px; height: 59px"
+                    />
+                </a>
+                <!-- Wrapped second button with anchor tag, href will be set dynamically -->
+                <a id="currentSlideBtnLink" href="index.html">
+                    <img
+                        id="currentSlideBtn"
+                        src="image/현재슬라이드부터.jpg"
+                        alt="Overlay"
+                        class="absolute top-0 left-0 w-full h-full object-contain opacity-0 transition-opacity cursor-pointer"
+                        style="top: 40px; left: 39px; width: 60px; height: 60px"
+                    />
+                </a>
+            </div>
+
+            <!-- Added overflow-hidden to sidebar and main content area -->
+            <div class="flex h-[calc(100vh-6rem)] bg-[#e8e5e1] overflow-hidden">
+                <div
+                    class="w-72 bg-gray-100 border-r border-gray-400 p-4 space-y-4 overflow-hidden"
+                >
+                    <div class="thumbnail-wrapper">
+                        <span class="slide-number">1</span>
+                        <div
+                            class="thumbnail border-2 border-pink-500 rounded shadow-md cursor-pointer overflow-hidden active"
+                            data-slide="1"
+                        >
+                            <img src="image/인적사항.jpg" alt="Slide 1" class="w-full h-auto" />
+                        </div>
+                    </div>
+
+                    <div class="thumbnail-wrapper">
+                        <span class="slide-number">2</span>
+                        <div
+                            class="thumbnail border-2 border-gray-300 rounded shadow-md cursor-pointer overflow-hidden"
+                            data-slide="2"
+                        >
+                            <img src="image/공유자랑.jpg" alt="Slide 2" class="w-full h-auto" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 flex items-center justify-center p-8 overflow-hidden">
+                    <div
+                        class="bg-white shadow-2xl"
+                        style="width: 1280px; height: 720px; aspect-ratio: 16/9"
+                    >
+                        <iframe
+                            id="mainSlide"
+                            src="index.html"
+                            class="w-full h-full border-0"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="fixed bottom-0 w-full h-6 bg-[#f3f2f1] border-t border-gray-300 text-gray-700 text-xs flex items-center justify-between px-4"
+            >
+                <div class="flex items-center gap-4">
+                    <span id="slideCounter">슬라이드 1/2</span>
+                    <span>한국어</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="hover:bg-gray-200 px-2 py-1 rounded">-</button>
+                    <span>100%</span>
+                    <button class="hover:bg-gray-200 px-2 py-1 rounded">+</button>
+                    <div class="flex gap-1">
+                        <button class="hover:bg-gray-200 p-1 rounded">⊞</button>
+                        <button class="hover:bg-gray-200 p-1 rounded">⊟</button>
+                        <button class="hover:bg-gray-200 p-1 rounded">▤</button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const thumbnails = document.querySelectorAll(".thumbnail");
+                const mainSlide = document.getElementById("mainSlide");
+                const slideCounter = document.getElementById("slideCounter");
+                const currentSlideBtnLink = document.getElementById("currentSlideBtnLink");
+
+                const slideFiles = {
+                    1: "index.html",
+                    2: "detail.html",
+                };
+
+                let currentSlide = 1;
+
+                function updateSlide(slideNum) {
+                    thumbnails.forEach((t) => t.classList.remove("active"));
+                    const targetThumbnail = document.querySelector(`[data-slide="${slideNum}"]`);
+                    if (targetThumbnail) {
+                        targetThumbnail.classList.add("active");
+                    }
+
+                    mainSlide.src = slideFiles[slideNum];
+                    currentSlide = parseInt(slideNum);
+                    slideCounter.textContent = `슬라이드 ${slideNum}/2`;
+
+                    currentSlideBtnLink.href = slideFiles[currentSlide];
+                }
+
+                thumbnails.forEach((thumbnail) => {
+                    thumbnail.addEventListener("click", () => {
+                        const slideNum = thumbnail.getAttribute("data-slide");
+                        updateSlide(slideNum);
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
