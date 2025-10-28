@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>박진우의 자기소개 페이지</title>
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- ✅ Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+  <!-- ✅ SUIT 폰트 -->
+  <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+
+  <!-- ✅ Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- 네비게이션 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Heyjinu_ Page</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#intro">자기소개</a></li>
+          <li class="nav-item"><a class="nav-link" href="#hobby">취미</a></li>
+          <li class="nav-item"><a class="nav-link" href="#recommend">추천</a></li>
+          <li class="nav-item"><a class="nav-link" href="#mbti">MBTI</a></li>
+          <li class="nav-item ms-3">
+            <a href="https://github.com/Norang2810" target="_blank" class="nav-link">
+              <i class="bi bi-github fs-4"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://norang2810.tistory.com" target="_blank" class="nav-link">
+              <i class="bi bi-journal-text fs-4"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 메인 컨텐츠 -->
+  <main class="container mt-5 pt-5">
+    <!-- 자기소개 -->
+    <section id="intro" class="py-5 text-center">
+      <h2 class="section-title">자기소개</h2>
+      <img src="img/img.jpg" alt="박진우 프로필 사진" class="profile-img shadow rounded-circle mb-4" width="220">
+      <p class="lead text-muted">
+        안녕하세요! 백엔드 개발자 지망생 <strong>박진우</strong>입니다.<br>
+        트렌드를 따르되, 기본과 본질을 잃지 않는 개발자가 되고 싶습니다.
+      </p>
+    </section>
+
+    <hr>
+
+    <!-- 취미 -->
+    <section id="hobby" class="py-5 text-center">
+      <h2 class="section-title mb-4">취미</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600" alt="Music"
+            class="hobby-img rounded shadow-sm mb-3">
+          <p>음악 감상 (발라드)</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <img src="img/image.png" alt="Coding" class="hobby-img rounded shadow-sm mb-3">
+          <p>코테 공부 (잔디 심기)</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=600" alt="Coffee"
+            class="hobby-img rounded shadow-sm mb-3">
+          <p>커피 브루잉 & 카페 탐방</p>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 추천 -->
+    <section id="recommend" class="py-5 text-center">
+      <h2 class="section-title">추천</h2>
+      <div class="card-group">
+        <!-- 추천 도서 -->
+        <div class="card mx-2 shadow-sm">
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/7EmboKQH8lM"
+            title="Clean Code by Robert C. Martin (Lecture)" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="card-body">
+            <h5 class="card-title">추천 도서</h5>
+            <p class="card-text">『Clean Code』 - 로버트 C. 마틴</p>
+            <p class="card-text"><small class="text-muted">읽을수록 코드가 달라집니다.</small></p>
+          </div>
+        </div>
+
+        <!-- 추천 영상 -->
+        <div class="card mx-2 shadow-sm">
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/4r6WdaY3SOA"
+            title="생활코딩 - 웹 개발 입문 시리즈" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="card-body">
+            <h5 class="card-title">추천 영상</h5>
+            <p class="card-text">생활코딩, 코딩알려주는눈나 등</p>
+            <p class="card-text"><small class="text-muted">HTML/CSS/JS 이해에 탁월한 강의</small></p>
+          </div>
+        </div>
+
+        <!-- 추천 음악 -->
+        <div class="card mx-2 shadow-sm">
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/HnX8z3yOV7w"
+            title="신용재 - 빛" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="card-body">
+            <h5 class="card-title">추천 음악</h5>
+            <p class="card-text">신용재 - “빛”</p>
+            <p class="card-text"><small class="text-muted">취준생에게 위로를 주는 곡이에요 🌙</small></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- MBTI -->
+    <section id="mbti" class="py-5 text-center">
+      <h2 class="section-title">MBTI</h2>
+      <div class="mbti-box mx-auto shadow-sm">
+        <h3 class="fw-bold text-dark">ESFJ</h3>
+        <p class="text-muted">외향적이고 사교적이며, 타인을 돕는 것을 즐기는 성격입니다.</p>
+        <button class="btn btn-outline-dark mt-2" id="btnMbti">나의 MBTI 자세히 보기</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-3 mt-5 bg-dark text-light">
+    <div class="mb-2">
+      <a href="https://github.com/Norang2810" target="_blank" class="text-light mx-2">
+        <i class="bi bi-github fs-4"></i>
+      </a>
+      <a href="https://norang2810.tistory.com/" target="_blank" class="text-light mx-2">
+        <i class="bi bi-journal-text fs-4"></i>
+      </a>
+    </div>
+    Made by. 박진우
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
