@@ -1,210 +1,228 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    h1 {
-        text-align: center; /* 글자 가운데 정렬 */
-        color: #00225c; /* 기존 테마와 어울리는 파란색 */
-        margin-bottom: 20px; /* 제목과 아래 폼 사이의 간격 */
-        font-size: 2em; /* 글자 크기 */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 귀여운 그림자 효과 */
-        margin: 100px;
-        /* text-decoration: underline;
-        text-decoration-thickness: 5px;
-        text-decoration-style: wavy; */
-    }
-    /* 전체 페이지 스타일 */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 동료로 함께하기 💖</title>
+
+  <!-- ✅ Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ✅ AOS (Animate On Scroll) for smooth fade-up animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
     body {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        background-color: #f4f7f6;
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        flex-direction: column; /* <<< 수정된 부분: 요소를 세로로 정렬합니다 */
+      background: linear-gradient(135deg, #f4f7f6, #e8eff1);
+      font-family: 'Pretendard', 'Helvetica Neue', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
     }
 
-    /* 폼을 감싸는 컨테이너 스타일 */
-    #container {
-        background-color: white;
-        padding-left: 15%;
-        padding-right: 15%;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 1500px;
-        box-sizing: border-box; /* padding을 너비에 포함시킴 */
-        margin-left: 10%;
-        margin-right: 10%;
+    h1 {
+      text-align: center;
+      color: #00225c;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      animation: fadeDown 1s ease;
     }
 
-    /* 폼 요소 그룹화 */
-    form > div {
-        margin-bottom: 20px;
+    @keyframes fadeDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
-    /* 라벨(label) 스타일 */
+    .card {
+      background: white;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 50px;
+      width: 100%;
+      max-width: 900px;
+      animation: fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     label {
-        display: block; /* 라벨을 한 줄 전체 차지하도록 설정 */
-        font-weight: bold;
-        margin-top: 20px;
-        color: #333;
+      font-weight: 600;
+      margin-top: 20px;
+      color: #333;
     }
 
-    /* 모든 입력 필드(input, textarea)의 공통 스타일 */
-    input[type="text"],
-    input[type="date"],
-    input[type="email"],
-    input[type="tel"],
-    textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box; /* padding을 너비에 포함시킴 */
-        font-size: 16px;
-        transition: border-color 0.3s;
-    }
-    input::placeholder, textarea::placeholder {
-        color: #b3b9be; /* 연한 하늘색 플레이스홀더 */
-        font-style: italic; /* 이탤릭체 */
+    input.form-control,
+    textarea.form-control {
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
     }
 
-    /* 입력 필드에 포커스 되었을 때 스타일 */
-    input:focus,
-    textarea:focus {
-        border-color: #007bff;
-        outline: none; /* 기본 아웃라인 제거 */
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-    }
-    
-    /* 성별, 취미 선택 부분 스타일 */
-    .choice-group div {
-        display: inline-block;
-        margin-right: 15px;
-    }
-    
-    /* 라디오 버튼과 체크박스 옆 라벨 스타일 */
-    input[type="radio"] + label,
-    input[type="checkbox"] + label {
-        font-weight: normal; /* 굵게 표시 안 함 */
-        display: inline-block;
-        margin-left: 5px;
-        cursor: pointer;
+    input.form-control:focus,
+    textarea.form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
     }
 
-    /* 가입하기 버튼 스타일 */
-    #btnRegister {
-        width: 100%;
-        padding: 15px;
-        background-color: rgb(157, 196, 208);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
+    .btn-custom {
+      background: linear-gradient(135deg, #64b5f6, #2196f3);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      width: 100%;
+      margin-top: 30px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      animation: bounce 2.5s infinite ease-in-out;
     }
 
-    /* 버튼에 마우스를 올렸을 때 스타일 */
-    #btnRegister:hover {
-        background-color: #039ac0;
+    .btn-custom:hover {
+      transform: scale(1.03);
+      background: linear-gradient(135deg, #42a5f5, #1e88e5);
     }
 
-    /* 구분선(hr) 스타일 */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     hr {
-        border: none;
-        border-top: 1px solid #eee;
-        margin: 20px 0;
+      border-top: 1px solid #ddd;
+      margin: 25px 0;
     }
-
-</style>
+  </style>
 </head>
+
 <body>
-    <h1>💖 동료로 함께하기 💖</h1>
-    <div id="container">
-        <br>
-        <hr>
-        <form id="registerForm" action="">
-          <label for="userName">이름</label><br>
-          <input id="userName" type="text" placeholder="이름을 입력해주세요."/><br>
-          <label for="userAge">생년월일</label><br>
-          <input id="userAge" type="date"/><br>
-          <label for="userEmail">e-mail</label><br>
-          <input id="userEmail" type="email" placeholder="이메일을 입력해주세요."/><br>
-          <label for="userTel">전화번호</label><br>
-          <input id="userTel" type="tel" placeholder="ex) 01012345678"/>
 
-        <br><hr>  
-          <label>성별</label><br>
-          <input id="male" type="radio" name="gender" value="M"><label for="male">남</label>
-          <input id="female" type="radio" name="gender" value="F" checked><label for="female">여</label><br>
-        <br><hr>
+  <h1>💖 동료로 함께하기 💖</h1>
 
-          <label>취미</label><br>
-          <input id="movie" type="checkbox" name="hobby" value="movie">
-          <label for="movie">영화, 드라마</label><br>    
-          <input id="sport" type="checkbox" name="hobby" value="sport" checked>
-          <label for="sport">운동</label><br>
-          <input id="mung" type="checkbox" name="hobby" value="game">
-          <label for="mung">게임</label><br>
-          <input id="mung" type="checkbox" name="hobby" value="reading">
-          <label for="mung">독서</label><br>
-          <input id="mung" type="checkbox" name="hobby" value="animation">
-          <label for="mung">애니메이션</label><br>
+  <div class="card" data-aos="zoom-in">
+    <form id="registerForm">
+      
+      <!-- 이름 -->
+      <div data-aos="fade-up" data-aos-delay="100">
+        <label for="userName" class="form-label">이름</label>
+        <input id="userName" type="text" class="form-control" placeholder="이름을 입력해주세요.">
+      </div>
 
-        <br><hr>
-          
-          <label for="major">전공</label>  
-          <input id="major" type="text" placeholder="예) 컴퓨터공학과"/><br>
+      <!-- 생년월일 -->
+      <div data-aos="fade-up" data-aos-delay="200">
+        <label for="userAge" class="form-label">생년월일</label>
+        <input id="userAge" type="date" class="form-control">
+      </div>
 
-        <br><hr>
-          <label for="desc">하고 싶은 말</label><br>
-          <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
-        </form>
+      <!-- 이메일 -->
+      <div data-aos="fade-up" data-aos-delay="300">
+        <label for="userEmail" class="form-label">E-mail</label>
+        <input id="userEmail" type="email" class="form-control" placeholder="example@email.com">
+      </div>
 
-        <br>
-        <input id="btnRegister" type="button" value="가입하기">
-        <hr style="margin-bottom: 300px;">
-    </div>  
+      <!-- 전화번호 -->
+      <div data-aos="fade-up" data-aos-delay="400">
+        <label for="userTel" class="form-label">전화번호</label>
+        <input id="userTel" type="tel" class="form-control" placeholder="ex) 01012345678">
+      </div>
 
-    <script>
-        window.onload = function() {
-            // # register form
-            document.querySelector("#btnRegister").onclick = function() {
-                console.log ( document.querySelector("#userName").value);
-                console.log ( document.querySelector("#userAge").value);
-                console.log ( document.querySelector("#userEmail").value);
-                console.log ( document.querySelector("#userTel").value);
+      <hr data-aos="fade-up" data-aos-delay="500">
 
-                // 성별 - radio
-                if (document.querySelector("#male").checked ){
-                    console.log("남자 선택함");
-                }else {
-                    console.log("여자 선택함");
+      <!-- 성별 -->
+      <div class="mb-3" data-aos="fade-up" data-aos-delay="600">
+        <label class="form-label">성별</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" id="male" value="M">
+          <label class="form-check-label" for="male">남</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" id="female" value="F" checked>
+          <label class="form-check-label" for="female">여</label>
+        </div>
+      </div>
 
-                }
+      <hr data-aos="fade-up" data-aos-delay="700">
 
-                // 취미 - checkbox
-                document.querySelectorAll("input[name='hobby']:checked").forEach( (item) => {
-                    console.log("hobby: " + item.value);
-                });
+      <!-- 취미 -->
+      <div data-aos="fade-up" data-aos-delay="800">
+        <label class="form-label">취미</label><br>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="movie" name="hobby" value="movie">
+          <label class="form-check-label" for="movie">영화, 드라마</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="sport" name="hobby" value="sport" checked>
+          <label class="form-check-label" for="sport">운동</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="game" name="hobby" value="game">
+          <label class="form-check-label" for="game">게임</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="reading" name="hobby" value="reading">
+          <label class="form-check-label" for="reading">독서</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="animation" name="hobby" value="animation">
+          <label class="form-check-label" for="animation">애니메이션</label>
+        </div>
+      </div>
 
-                // select
-                console.log("전공: " + document.querySelector("#major").value );
+      <hr data-aos="fade-up" data-aos-delay="900">
 
-                // 하고싶은말
-                console.log("하고싶은말: " + document.querySelector("#desc").value);
-            }
-            
-        }
-    </script>
+      <!-- 전공 -->
+      <div data-aos="fade-up" data-aos-delay="1000">
+        <label for="major" class="form-label">전공</label>
+        <input id="major" type="text" class="form-control" placeholder="예) 컴퓨터공학과">
+      </div>
+
+      <hr data-aos="fade-up" data-aos-delay="1100">
+
+      <!-- 하고 싶은 말 -->
+      <div data-aos="fade-up" data-aos-delay="1200">
+        <label for="desc" class="form-label">하고 싶은 말</label>
+        <textarea id="desc" class="form-control" rows="5" placeholder="자유롭게 적어주세요."></textarea>
+      </div>
+
+      <!-- 가입 버튼 -->
+      <div data-aos="fade-up" data-aos-delay="1300">
+        <button id="btnRegister" type="button" class="btn btn-custom mt-3">가입하기</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- ✅ Bootstrap + AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    document.querySelector("#btnRegister").addEventListener("click", function() {
+      console.log("이름:", document.querySelector("#userName").value);
+      console.log("생년월일:", document.querySelector("#userAge").value);
+      console.log("이메일:", document.querySelector("#userEmail").value);
+      console.log("전화번호:", document.querySelector("#userTel").value);
+
+      let gender = document.querySelector("input[name='gender']:checked").value;
+      console.log("성별:", gender);
+
+      document.querySelectorAll("input[name='hobby']:checked").forEach(item => {
+        console.log("취미:", item.value);
+      });
+
+      console.log("전공:", document.querySelector("#major").value);
+      console.log("하고 싶은 말:", document.querySelector("#desc").value);
+    });
+  </script>
 
 </body>
 </html>
